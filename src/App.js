@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Form from "./components/form/Form";
 import Users from "./components/data/Users";
-import User from "./components/data/User";
+import ShowMore from "./components/ShowMore";
 import "./App.css";
 
 function App() {
@@ -40,13 +40,10 @@ function App() {
   }
   function showMore(id) {
     setBtnMore(true);
-    console.log(id);
-    const dataCopy = [...data];
-    const filterUser = dataCopy.filter((user) => user.id === id);
-    console.log(filterUser);
+    const filterUser = data.filter((user) => user.id === id);
     setData(filterUser);
   }
-  function back() {
+  async function back() {
     setBtnMore(false);
     setData([]);
   }
@@ -80,26 +77,7 @@ function App() {
           <Users isLoading={isLoading} data={data} showMore={showMore} />
         </div>
       ) : (
-        <div className="showMore">
-          {data.map((user) => (
-            <div key={user.id}>
-              <img src={user.avatar_url} alt={user.login} />
-              <h2>{user.login}</h2>
-              <div>
-                <h4>
-                  Number of followers : <span>{user.followers_url.length}</span>
-                </h4>
-                <h4>
-                  Number of following :<span>{user.following_url.length}</span>
-                </h4>
-                <h4>
-                  Number of repository :<span>{user.repos_url.length}</span>
-                </h4>
-              </div>
-              <button onClick={() => back()}>Back</button>
-            </div>
-          ))}
-        </div>
+        <ShowMore data={data} back={back} />
       )}
     </>
   );
