@@ -1,5 +1,5 @@
 import User from "./User";
-function Users({ isLoading, data }) {
+function Users({ isLoading, data, showMore }) {
   return (
     <ul className="listUsers">
       {isLoading && <p className="spinner"></p>}
@@ -9,6 +9,8 @@ function Users({ isLoading, data }) {
           src={user?.avatar_url}
           alt={user?.type}
           login={user?.login}
+          id={user.id}
+          showMore={showMore}
         />
       ))}
     </ul>

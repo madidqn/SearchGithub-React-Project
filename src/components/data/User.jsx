@@ -1,9 +1,9 @@
-function User({ src, alt, login }) {
+function User({ src, alt, login, id, showMore }) {
   return (
     <li>
       <img src={src} alt={alt} />
       <h3>{login}</h3>
-      <button>More</button>
+      <button onClick={() => showMore(id)}>More</button>
     </li>
   );
 }

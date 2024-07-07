@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Form from "./components/form/Form";
 import Users from "./components/data/Users";
+import User from "./components/data/User";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   const [searchUser, setSearchUser] = useState("");
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [btnMore, setBtnMore] = useState(false);
 
   async function submit(e) {
     e.preventDefault();
@@ -36,7 +38,15 @@ function App() {
   function deleteUsers() {
     setData([]);
   }
-
+  function showMore(id) {
+    setBtnMore(true);
+    console.log(id);
+    const filterUser = data.filter((user) => user.id === id);
+    console.log(filterUser);
+  }
+  function back() {
+    setBtnMore(false);
+  }
   return (
     <>
       <header>
@@ -50,21 +60,33 @@ function App() {
           </li>
         </ul>
       </header>
-      <div className="app">
-        <Form
-          submit={submit}
-          error={error}
-          type={"text"}
-          placeholder={"Search Users..."}
-          searchUser={searchUser}
-          setSearchUser={setSearchUser}
-          isLoading={!isLoading}
-          typeBtn={"button"}
-          deleteUsers={deleteUsers}
-          length={data.length}
-        />
-        <Users isLoading={isLoading} data={data} />
-      </div>
+      {!btnMore ? (
+        <div className="app">
+          <Form
+            submit={submit}
+            error={error}
+            type={"text"}
+            placeholder={"Search Users..."}
+            searchUser={searchUser}
+            setSearchUser={setSearchUser}
+            isLoading={!isLoading}
+            typeBtn={"button"}
+            deleteUsers={deleteUsers}
+            length={data.length}
+          />
+          <Users isLoading={isLoading} data={data} showMore={showMore} />
+        </div>
+      ) : (
+        <div>
+          {data.map((user) => (
+            <>
+              <img src={user.src} alt={user.alt} />
+              <h3>{user.login}</h3>
+              <button onClick={() => back()}>Back</button>
+            </>
+          ))}
+        </div>
+      )}
     </>
   );
 }
