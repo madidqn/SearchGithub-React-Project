@@ -84,14 +84,17 @@ function App() {
           {data.map((user) => (
             <div key={user.id}>
               <img src={user.avatar_url} alt={user.login} />
+              <h2>{user.login}</h2>
               <div>
-                <h3>{user.login}</h3>
-                <h4>Number of followers : {user.followers_url.length}</h4>
                 <h4>
-                  Number of following : {user.following_url.length}
-                  {user.repos_url.length}
+                  Number of followers : <span>{user.followers_url.length}</span>
                 </h4>
-                <h4>Number of repository :{user.repos_url.length}</h4>
+                <h4>
+                  Number of following :<span>{user.following_url.length}</span>
+                </h4>
+                <h4>
+                  Number of repository :<span>{user.repos_url.length}</span>
+                </h4>
               </div>
               <button onClick={() => back()}>Back</button>
             </div>
