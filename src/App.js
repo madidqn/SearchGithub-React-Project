@@ -41,11 +41,14 @@ function App() {
   function showMore(id) {
     setBtnMore(true);
     console.log(id);
-    const filterUser = data.filter((user) => user.id === id);
+    const dataCopy = [...data];
+    const filterUser = dataCopy.filter((user) => user.id === id);
     console.log(filterUser);
+    setData(filterUser);
   }
   function back() {
     setBtnMore(false);
+    setData([]);
   }
   return (
     <>
@@ -77,13 +80,13 @@ function App() {
           <Users isLoading={isLoading} data={data} showMore={showMore} />
         </div>
       ) : (
-        <div>
+        <div className="showMore">
           {data.map((user) => (
-            <>
-              <img src={user.src} alt={user.alt} />
+            <div key={user.id}>
+              <img src={user.avatar_url} alt={user.login} />
               <h3>{user.login}</h3>
               <button onClick={() => back()}>Back</button>
-            </>
+            </div>
           ))}
         </div>
       )}
