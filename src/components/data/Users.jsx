@@ -1,7 +1,7 @@
 import User from "./User";
 function Users({ isLoading, data }) {
   return (
-    <ul>
+    <ul className="listUsers">
       {isLoading && <p className="spinner"></p>}
       {data.map((user) => (
         <User

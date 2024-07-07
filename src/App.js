@@ -38,21 +38,34 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <Form
-        submit={submit}
-        error={error}
-        type={"text"}
-        placeholder={"Search Users..."}
-        searchUser={searchUser}
-        setSearchUser={setSearchUser}
-        isLoading={!isLoading}
-        typeBtn={"button"}
-        deleteUsers={deleteUsers}
-        length={data.length}
-      />
-      <Users isLoading={isLoading} data={data} />
-    </div>
+    <>
+      <header>
+        <h1>Github</h1>
+        <ul className="listHeader">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+        </ul>
+      </header>
+      <div className="app">
+        <Form
+          submit={submit}
+          error={error}
+          type={"text"}
+          placeholder={"Search Users..."}
+          searchUser={searchUser}
+          setSearchUser={setSearchUser}
+          isLoading={!isLoading}
+          typeBtn={"button"}
+          deleteUsers={deleteUsers}
+          length={data.length}
+        />
+        <Users isLoading={isLoading} data={data} />
+      </div>
+    </>
   );
 }
 

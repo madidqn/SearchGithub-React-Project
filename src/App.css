@@ -3,6 +3,27 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: sans-serif;
+}
+header {
+  background-color: rgb(203, 48, 79);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-items: center;
+}
+.listHeader {
+  display: flex;
+  justify-content: end;
+  column-gap: 2rem;
+  font-size: 1.2rem;
+}
+.listHeader li a {
+  color: white;
 }
 .app {
   max-width: 1000px;
@@ -12,7 +33,6 @@
   display: grid;
   row-gap: 1rem;
   padding: 0 1rem;
-  font-family: sans-serif;
 }
 form {
   width: 100%;
@@ -58,7 +78,7 @@ form.active::before {
   outline: none;
   font-size: 18px;
 }
-.app ul {
+.app .listUsers {
   position: relative;
   width: 100%;
   display: grid;
@@ -67,7 +87,7 @@ form.active::before {
   margin: 0 auto;
   margin-top: 50px;
 }
-ul li {
+.listUsers li {
   border: 2px solid rgba(235, 210, 210, 0.507);
   padding: 1.5rem;
   display: flex;
@@ -76,12 +96,12 @@ ul li {
   justify-content: center;
   row-gap: 15px;
 }
-li img {
+.listUsers li img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-li button {
+.listUsers li button {
   height: 25px;
   width: 45px;
   border: none;
