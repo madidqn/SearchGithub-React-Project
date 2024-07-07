@@ -4,7 +4,7 @@ import ButtonClear from "./ButtonClear";
 
 function Form({
   submit,
-  isValue,
+  error,
   type,
   placeholder,
   searchUser,
@@ -15,7 +15,7 @@ function Form({
   length,
 }) {
   return (
-    <form onSubmit={(e) => submit(e)} className={isValue ? "active" : ""}>
+    <form onSubmit={(e) => submit(e)} className={error ? "active" : ""}>
       <InputSearch
         type={type}
         placeholder={placeholder}

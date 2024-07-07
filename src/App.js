@@ -7,13 +7,16 @@ import "./App.css";
 function App() {
   const [data, setData] = useState([]);
   const [searchUser, setSearchUser] = useState("");
-  const [isValue, setIsValue] = useState(false);
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   async function submit(e) {
     e.preventDefault();
     if (searchUser === "") {
-      setIsValue(true);
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
     } else {
       setData([]);
       setIsLoading(true);
@@ -23,7 +26,7 @@ function App() {
         );
         setData(result?.data?.items);
         setSearchUser("");
-        setIsValue(false);
+        // setError(false);
         setIsLoading(false);
       } catch (e) {
         console.log(e);
@@ -32,7 +35,7 @@ function App() {
   }
 
   function deleteUsers() {
-    setIsValue(false);
+    // setIsValue(false);
     setData([]);
   }
 
@@ -40,7 +43,7 @@ function App() {
     <div className="app">
       <Form
         submit={submit}
-        isValue={isValue}
+        error={error}
         type={"text"}
         placeholder={"Search Users..."}
         searchUser={searchUser}
