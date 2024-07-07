@@ -26,7 +26,6 @@ function App() {
         );
         setData(result?.data?.items);
         setSearchUser("");
-        // setError(false);
         setIsLoading(false);
       } catch (e) {
         console.log(e);
@@ -35,7 +34,6 @@ function App() {
   }
 
   function deleteUsers() {
-    // setIsValue(false);
     setData([]);
   }
 
