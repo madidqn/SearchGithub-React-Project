@@ -1,17 +1,16 @@
+import { useContext } from "react";
+
+import { AppContext } from "../../context/AppProvider";
+
 import User from "./User";
-function Users({ isLoading, data, showMore }) {
+
+function Users() {
+  const { data, isLoading } = useContext(AppContext);
   return (
     <ul className="listUsers">
       {isLoading && <p className="spinner"></p>}
-      {data.map((user) => (
-        <User
-          key={user?.id}
-          src={user?.avatar_url}
-          alt={user?.type}
-          login={user?.login}
-          id={user.id}
-          showMore={showMore}
-        />
+      {data.map((user, index) => (
+        <User key={user?.id} index={index} />
       ))}
     </ul>
   );

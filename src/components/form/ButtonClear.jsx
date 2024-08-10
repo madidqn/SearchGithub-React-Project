@@ -1,10 +1,14 @@
-function ButtonClear({ type, deleteUsers, length }) {
+import { useContext } from "react";
+import { AppContext } from "../../context/AppProvider";
+
+function ButtonClear() {
+  const { data, deleteUsers } = useContext(AppContext);
   return (
     <>
-      {length > 0 && (
+      {data.length > 0 && (
         <button
           className="deleteData"
-          type={type}
+          type="button"
           onClick={() => deleteUsers()}
         >
           Clear

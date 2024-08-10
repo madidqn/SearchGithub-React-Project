@@ -1,29 +1,17 @@
+import { useContext } from "react";
+import { AppContext } from "../../context/AppProvider";
+
 import InputSearch from "./InputSearch";
 import ButtonSubmit from "./ButtonSubmit";
 import ButtonClear from "./ButtonClear";
 
-function Form({
-  submit,
-  error,
-  type,
-  placeholder,
-  searchUser,
-  setSearchUser,
-  isLoading,
-  typeBtn,
-  deleteUsers,
-  length,
-}) {
+function Form({}) {
+  const { submit, error } = useContext(AppContext);
   return (
     <form onSubmit={(e) => submit(e)} className={error ? "active" : ""}>
-      <InputSearch
-        type={type}
-        placeholder={placeholder}
-        searchUser={searchUser}
-        setSearchUser={setSearchUser}
-      />
-      <ButtonSubmit isLoading={isLoading} />
-      <ButtonClear type={typeBtn} deleteUsers={deleteUsers} length={length} />
+      <InputSearch />
+      <ButtonSubmit />
+      <ButtonClear />
     </form>
   );
 }

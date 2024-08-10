@@ -1,8 +1,11 @@
-function InputSearch({ type, placeholder, searchUser, setSearchUser }) {
+import { AppContext } from "../../context/AppProvider";
+import { useContext } from "react";
+function InputSearch() {
+  const { searchUser, setSearchUser } = useContext(AppContext);
   return (
     <input
-      type={type}
-      placeholder={placeholder}
+      type="text"
+      placeholder={"Search Users..."}
       value={searchUser}
       onChange={(e) => setSearchUser(e.target.value)}
     />
