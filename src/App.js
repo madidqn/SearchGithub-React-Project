@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<About />} />
-        <Route path="/show-more/:id?" element={<ShowMore />} />
+        <Route path="/show-more/:index?" element={<ShowMore />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -1,17 +1,22 @@
-import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
 
 import { AppContext } from "../context/AppProvider";
 
 function ShowMore() {
-  const { id } = useParams();
-  const { data } = useContext(AppContext);
+  const { index } = useParams();
+  const { data, getRepos, repos } = useContext(AppContext);
+  // useEffect(() => {
+  //   getRepos(data[index].login);
+  // });
+  // getRepos(data[index].login);
   return (
     <div className="showMore">
       <div>
-        {console.log(id)}
-        {/* <img src={data[index].avatar_url} alt={data[index].login} /> */}
-        {/* <h2>{data[index].login}</h2>
+        <div>
+          <img src={data[index].avatar_url} alt={data[index].login} />
+          <h3>{data[index].login}</h3>
+        </div>
         <div>
           <h4>
             Number of followers :{" "}
@@ -23,9 +28,22 @@ function ShowMore() {
           <h4>
             Number of repository :<span>{data[index].repos_url.length}</span>
           </h4>
-        </div> */}
-        <Link to="/">Back</Link>
+        </div>
       </div>
+      {/* <div className="repos">
+        {repos.map((re) => (
+          <Link to={`${re.html_url}`}>salam</Link>
+        ))}
+      </div> */}
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga laboriosam
+        nemo impedit a non, iure officia, itaque quisquam perspiciatis aliquid
+        totam autem porro quidem, vero sequi. Rerum sequi architecto
+        consequatur.
+      </div>
+      <Link to="/" className="btn-back">
+        Back
+      </Link>
     </div>
   );
 }
