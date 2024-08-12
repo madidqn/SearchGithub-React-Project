@@ -8,6 +8,7 @@ function ShowMore() {
   const { data, getRepos, repos } = useContext(AppContext);
   useEffect(() => {
     getRepos(data[index].login);
+    // eslint-disable-next-line
   }, [index]);
   return (
     <div className="showMore">
@@ -18,14 +19,13 @@ function ShowMore() {
         </div>
         <div>
           <h4>
-            Number of followers :{" "}
-            <span>{data[index].followers_url.length}</span>
+            Followers : <span>{data[index].followers_url.length}</span>
           </h4>
           <h4>
-            Number of following :<span>{data[index].following_url.length}</span>
+            Following :<span>{data[index].following_url.length}</span>
           </h4>
           <h4>
-            Number of repository :<span>{data[index].repos_url.length}</span>
+            Repository :<span>{data[index].repos_url.length}</span>
           </h4>
         </div>
       </div>

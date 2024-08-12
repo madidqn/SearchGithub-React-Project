@@ -1,7 +1,9 @@
 import { createContext } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 // import { useReducer } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AppContext = createContext();
 // const initState = {
@@ -40,12 +42,16 @@ function AppProvider({ children }) {
         const result = await axios(
           `https://api.github.com/search/users?q=${searchUser}`
         );
+        if (result.status === 200) {
+          toast.success("get users is success");
+        }
         setData(result?.data?.items);
         setSearchUser("");
         // dispatch({ type: "searchUser" });
         setIsLoading(false);
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
       }
     }
   }
@@ -58,10 +64,12 @@ function AppProvider({ children }) {
       setRepos(repos?.data);
     } catch (e) {
       console.log(e);
+      toast.error(e.message);
     }
   }
   function deleteUsers() {
     setData([]);
+    toast.info("delete is success...");
   }
   return (
     <>
