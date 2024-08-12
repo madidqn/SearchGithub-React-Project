@@ -191,6 +191,18 @@ form.active::before {
 .showMore > div:first-child > div:last-child > h4 span {
   color: darkred;
 }
+.repos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.repos .repo {
+  color: black;
+  font-size: 15px;
+}
+.repos .repo:hover {
+  color: blue;
+}
 .btn-back:hover {
   opacity: 0.9;
   cursor: pointer;

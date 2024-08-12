@@ -1,15 +1,14 @@
 import { Link, useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { AppContext } from "../context/AppProvider";
 
 function ShowMore() {
   const { index } = useParams();
   const { data, getRepos, repos } = useContext(AppContext);
-  // useEffect(() => {
-  //   getRepos(data[index].login);
-  // });
-  // getRepos(data[index].login);
+  useEffect(() => {
+    getRepos(data[index].login);
+  }, [index]);
   return (
     <div className="showMore">
       <div>
@@ -30,16 +29,12 @@ function ShowMore() {
           </h4>
         </div>
       </div>
-      {/* <div className="repos">
+      <div className="repos">
         {repos.map((re) => (
-          <Link to={`${re.html_url}`}>salam</Link>
+          <Link to={`${re.html_url}`} target="_blank" className="repo">
+            {re.full_name}
+          </Link>
         ))}
-      </div> */}
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga laboriosam
-        nemo impedit a non, iure officia, itaque quisquam perspiciatis aliquid
-        totam autem porro quidem, vero sequi. Rerum sequi architecto
-        consequatur.
       </div>
       <Link to="/" className="btn-back">
         Back
